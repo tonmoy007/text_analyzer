@@ -3,10 +3,15 @@ services:
   db:
     image: postgres:13
     restart: always
-    container_name: postgres_test_db
+    container_name: postgres_text_analyzer
     ports:
       - '5432:5432'
+    volumes:
+      - 'postgresql_data:/var/lib/postgresql/data'
     environment:
       POSTGRES_USER: test_user
       POSTGRES_PASSWORD: test_password
       POSTGRES_DB: text_analyzer
+volumes:
+  postgresql_data:
+    driver: local
