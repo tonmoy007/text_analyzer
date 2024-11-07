@@ -1,7 +1,10 @@
 import { ApiProperty } from '@nestjs/swagger';
-import Joi from 'joi';
-import { JoiSchema } from 'nestjs-joi';
+import * as Joi from 'joi';
+import { JoiSchema, JoiSchemaOptions } from 'nestjs-joi';
 
+@JoiSchemaOptions({
+  allowUnknown: false,
+})
 export class LoginDto {
   @ApiProperty({ description: 'login user email' })
   @JoiSchema(Joi.string().required())

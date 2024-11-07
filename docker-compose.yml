@@ -1,6 +1,0 @@
-services:
-  app:
-    build: .
-    image: text_analyser:latest
-    container_name: app
-
