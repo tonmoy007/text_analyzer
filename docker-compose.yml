@@ -1,9 +1,18 @@
-# The containers that compose the project
 services:
-  db:
+  nest-api:
+    container_name: nest-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3091:${API_PORT}'
+    env_file:
+      - .env
+  postgres:
     image: postgres:13
     restart: always
     container_name: postgres_text_analyzer
+    hostname: ${DB_HOST}
     ports:
       - '5432:5432'
     volumes:

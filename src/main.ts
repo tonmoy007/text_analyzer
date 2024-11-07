@@ -4,7 +4,6 @@ import {
   FastifyAdapter,
   NestFastifyApplication,
 } from '@nestjs/platform-fastify';
-import helmet from '@fastify/helmet'
 import * as process from 'node:process';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { INestApplication } from '@nestjs/common';
@@ -38,7 +37,6 @@ async function bootstrap() {
     createSwagger(app);
   }
   const logInterceptor = app.select(CommonModule).get(LogInterceptor);
-  await app.register(helmet)
   app.useGlobalInterceptors(logInterceptor);
   await app.listen(process.env.PORT ?? API_DEFAULT_PORT);
 }
